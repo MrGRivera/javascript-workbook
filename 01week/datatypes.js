@@ -24,7 +24,7 @@ console.log(typeof (myNull));
 
 // * Undefined
 const notDefined = undefined;
-console.log(typeof (notDefined));
+console.log(typeof (notDefined)); 
 
 // * Number
 const myNum = 123;
