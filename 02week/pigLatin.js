@@ -25,15 +25,17 @@ const pigLatin = (word) => {
     }
   }
 
-  let firstVowel = findVowel(word);
-  let begOfWord = word.substring(0, firstVowel);
-  let endOfWord = word.substring(firstVowel);
-
   if (firstVowel > 0) {
     return endOfWord + begOfWord + "ay";
   } else {
     return word + "yay";
   }
+
+  let firstVowel = findVowel(word);
+  let begOfWord = word.substring(0, firstVowel);
+  let endOfWord = word.substring(firstVowel);
+
+  
   
 
 }
