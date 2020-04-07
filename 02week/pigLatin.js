@@ -8,16 +8,40 @@ const rl = readline.createInterface({
 });
 
 
-const pigLatin = (word)  => {
+const pigLatin = (word) => {
 
   // Your code here
+  word = word.toLowerCase();
+  word = word.trim();
+  let vowelString = "aeiou"
+
+  
+
+  let findVowel = (word) => {
+    for (let i = 0; i < word.length; i++) {
+      if (vowelString.indexOf(word[i]) !== -1) {
+        return i;
+      }
+    }
+  }
+
+  let firstVowel = findVowel(word);
+  let begOfWord = word.substring(0, firstVowel);
+  let endOfWord = word.substring(firstVowel);
+
+  if (firstVowel > 0) {
+    return endOfWord + begOfWord + "ay";
+  } else {
+    return word + "yay";
+  }
+  
 
 }
 
 
 const getPrompt = () => {
   rl.question('word ', (answer) => {
-    console.log( pigLatin(answer) );
+    console.log(pigLatin(answer));
     getPrompt();
   });
 }
