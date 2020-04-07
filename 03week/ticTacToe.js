@@ -25,6 +25,14 @@ function printBoard() {
 
 function horizontalWin() {
   // Your code here
+
+  if (board[0][0]==='X' && board[0][1]==='X' && board[0][2]==='O') {
+    return(true);
+  } else if (board[0][0]==='O' && board[0][1]==='O' && board[0][2]==='O') {
+    return(true);
+  } else {
+    return(false);
+  }
 }
 
 function verticalWin() {
