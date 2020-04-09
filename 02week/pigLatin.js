@@ -25,6 +25,8 @@ const pigLatin = (word) => {
     }
   }
 
+  
+
   let firstVowel = findVowel(word);
   let begOfWord = word.substring(0, firstVowel);
   let endOfWord = word.substring(firstVowel);
@@ -34,6 +36,7 @@ const pigLatin = (word) => {
   } else {
     return word + "yay";
   }
+  
   
 
 }
