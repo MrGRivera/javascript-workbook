@@ -84,8 +84,14 @@ function checkForWin() {
 function ticTacToe(row, column) {
   // Your code here
   let myPosition = board[row].splice(column, 1, playerTurn);
-  playerTurn = 'O';
-  return board;
+  if (checkForWin === true) {
+    return "You Won!";
+  } else {
+    playerTurn = 'O';
+    return board;
+  }
+  
+  
 
   
 }
