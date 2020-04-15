@@ -1,18 +1,63 @@
-console.log("Loaded script");
+'use strict'
+
+console.log('loaded todo ui');
+
+let addButton = document.getElementById("addButton");
+addButton.addEventListener('click', function(){
+  console.log("clicked the add button");
+
+  let inputElement = document.getElementById('inputText');
+  let todoText = inputElement.value;
+  inputElement.value = '';
+
+  let li = document.createElement('li');
+
+  let span = document.createElement('span');
+
+  span.innerText = todoText;
+
+  let deleteButton = document.createElement('button');
+
+  deleteButton.innerText = 'delete';
+
+  deleteButton.classList.add('delete');
+
+  
+
+  let ul = document.querySelector('ul');
+  ul.appendChild(li);
+
+  li.appendChild(span);
+  setupSpanEvent(span);
+  li.appendChild(deleteButton);
+  setupDeleteEvent(deleteButton);
 
 
-// when add button is clicked
-// append text to bottom of list
-  //add new list item
+})
 
-// when delete button is clicked
-// remove its parent list item
+let allDeletes = document.querySelectorAll('.delete');
+for(let i=0;i<allDeletes.length;i++){
+  let deleteButton = allDeletes[i];
+  setupDeleteEvent(deleteButton);
+}
 
-// when span is clicked
-// class done should be added
+function setupDeleteEvent(deleteButton){
+  deleteButton.addEventListener('click',function(){
+    console.log("delete got clicked, parent li is ", deleteButton.parentElement);
+    let parentLi = deleteButton.parentElement;
+    parentLi.remove();
+  });
+}
 
+let allSpans = document.querySelectorAll("span");
 
-
-
-//this function adds click event to the span
-
+for(let i=0;i<allSpans.length;i++){
+  let span = allSpans[i];
+  setupSpanEvent(span);
+}
+function setupSpanEvent(span){
+  span.addEventListener('click',function(){
+    console.log("the span got clicked", span);
+    span.classList.toggle("done");
+  });
+}
