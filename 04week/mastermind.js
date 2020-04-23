@@ -34,41 +34,33 @@ function generateHint(guess) {
   let soultionArray = solution.split('');
   let guessArray = guess.split('');
 
-  let correctLetterLocations = 0;
-  
+  let exactMatch = 0;
 
-  
+
+
   //check for exact match
   for (let i = 0; i < soultionArray.length; i++) {
     if (soultionArray[i] == guessArray[i]) {
-      correctLetterLocations++;
+      exactMatch++;
       soultionArray[i] = null;
-      
+
     }
   }
 
-  let correctLetters = 0;
+  let partialMatch = 0;
 
   //check for partial match
   for (let n = 0; n < soultionArray.length; n++) {
     let targetIndex = guessArray.indexOf(soultionArray[n])
     if (targetIndex > -1) {
-      correctLetters++;
+      partialMatch++;
       soultionArray[n] = null;
-      
+
     }
 
   }
-  return `${correctLetterLocations}-${correctLetters}`;
+  return `${exactMatch}-${partialMatch}`;
 }
-
-
-
-
-
-
-
-
 
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
@@ -80,10 +72,12 @@ function mastermind(guess) {
     return "You guessed it!";
   }
 
+  //place input on board with hint
   let hint = generateHint(guess);
   board.push(`${guess} ${hint}`);
 
-  if(board.length == 10){
+  //user only has 10 moves
+  if (board.length == 10) {
     console.log(`You ran out of turns! The solution was ${solution}`);
     return `You ran out of turns! The solution was ${solution}`;
   } else {
