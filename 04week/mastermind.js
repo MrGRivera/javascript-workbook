@@ -28,13 +28,66 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
+function generateHint(guess) {
   // your code here
+
+  let soultionArray = solution.split('');
+  let guessArray = guess.split('');
+
+  let exactMatch = 0;
+
+
+
+  //check for exact match
+  for (let i = 0; i < soultionArray.length; i++) {
+    if (soultionArray[i] == guessArray[i]) {
+      exactMatch++;
+      soultionArray[i] = null;
+
+    }
+  }
+
+  let partialMatch = 0;
+
+  //check for partial match
+  for (let n = 0; n < soultionArray.length; n++) {
+    let targetIndex = guessArray.indexOf(soultionArray[n])
+    if (targetIndex > -1) {
+      partialMatch++;
+      soultionArray[n] = null;
+
+    }
+
+  }
+  return `${exactMatch}-${partialMatch}`;
 }
 
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
+
+  //checks for win
+  if (solution == guess) {
+    console.log("You guessed it!");
+    return "You guessed it!";
+  }
+
+  //place input on board with hint
+  let hint = generateHint(guess);
+  board.push(`${guess} ${hint}`);
+
+  //user only has 10 moves
+  if (board.length == 10) {
+    console.log(`You ran out of turns! The solution was ${solution}`);
+    return `You ran out of turns! The solution was ${solution}`;
+  } else {
+    console.log("Guess again.");
+    return "Guess again."
+  }
+
+
+
+
 }
 
 
