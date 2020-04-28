@@ -34,17 +34,27 @@ class Ship {
 
 
   //if the crew member matches the ability 
-  //ex. if crewMember1.job = pilot && ship.type = mav
+  //ex. if this.job = pilot && this.type = mav return ship's ability
   missionStatement() {
     if (this.crew.length == 0) {
       return "Can't perform a mission yet.";
     } else {
+      for(let i=0; i<this.crew.length; i++)//loop through the crew members
+      //if the crew member job matches its ship return ships's ability
+      for (let property in jobTypes){//loops through job types to find a match
+        if (property == this.job && jobTypes[property == this.type]){
+          
+        }
         return this.ability;
       }
+      
+
 
     }
-    
+
   }
+
+}
 
 
 
@@ -57,10 +67,10 @@ let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
 let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
 
 
-// crewMember1.enterShip(mav);
-// // crewMember2.enterShip(hermes);
-// console.log(mav.missionStatement());
-// // console.log(hermes.missionStatement());
+crewMember1.enterShip(mav);
+crewMember2.enterShip(hermes);
+console.log(mav.missionStatement());
+console.log(hermes.missionStatement());
 
 
 
