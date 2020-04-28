@@ -78,49 +78,126 @@
 // console.log(guy.greeting());
 
 
+// 'use strict'
+
+
+// //stand in for crew member
+// class Student {
+
+
+//   constructor(name, gradeLevel){
+//     this.name = name;
+//     this.gradeLevel = gradeLevel;
+//     this.homeRoom = null;
+//   }
+
+//   description(){
+//     return`${this.name} is a ${this.gradeLevel}th grader)`;
+//   }
+// }
+
+// //stand in for ship
+// class HomeRoom{
+//   constructor(roomNumber, teacher){
+//     this.teacher = teacher;
+//     this.roomNumber = roomNumber;
+//     this.students = [];
+//   }
+
+//   description(){
+
+
+//     if(this.students.length == 0) {
+//       return `Home room ${this.roomNumber} is managed by ${this.teacher}`;
+//     } else {
+//       return `Home room ${this.roomNumber} is managed by ${this.teacher} with ${this.students.length} students`;
+//     }
+    
+//   }
+// }
+
+// let mike = new Student("Mike", 10);
+// let mark = new Student("Mark", 10);
+// let amy = new Student("Amy", 12);
+
+// let r1 = new HomeRoom("101", "Mr DeFazio");
+// let r2 = new HomeRoom("102", "Ms Maria");
+
+// console.log(r1.description());
+
 'use strict'
 
-
-//stand in for crew member
-class Student {
-
-
-  constructor(name, gradeLevel){
-    this.name = name;
-    this.gradeLevel = gradeLevel;
-    this.homeRoom = null;
+class vehicle {
+  constructor(mpg, color, engineType, gasTankCapacity) {
+    this.mpg = mpg;
+    this.color = color;
+    this.engineType = engineType
+    this.gasTankCapacity = gasTankCapacity;
+    this.fuelLevel = 0;
+    this.mileage = 0;
   }
 
-  description(){
-    return`${this.name} is a ${this.gradeLevel}th grader)`;
-  }
-}
+  fuelUp(gallons){
+    this.fuelLevel = this.fuelLevel + gallons;
 
-//stand in for ship
-class HomeRoom{
-  constructor(roomNumber, teacher){
-    this.teacher = teacher;
-    this.roomNumber = roomNumber;
-    this.students = [];
-  }
-
-  description(){
-
-
-    if(this.students.length == 0) {
-      return `Home room ${this.roomNumber} is managed by ${this.teacher}`;
-    } else {
-      return `Home room ${this.roomNumber} is managed by ${this.teacher} with ${this.students.length} students`;
+    if(this.fuelLevel>this.gasTankCapacity){
+      this.fuelLevel = this.gasTankCapacity;
     }
-    
+
+    if(this.fuelLevel < 0) {
+      this.fuelLevel = 0;
+    }
   }
+
+
+  drive(miles) {
+    console.log("inside the vehicle method");
+    let gallonsConsumed = miles / this.mpg
+    this.fuelLevel = this.fuelLevel - gallonsConsumed;
+
+    if(this.fuelLevel < 0){
+      this.fuelLevel = 0;
+    }
+  }
+
 }
 
-let mike = new Student("Mike", 10);
-let mark = new Student("Mark", 10);
-let amy = new Student("Amy", 12);
+let myJeep = new vehicle (15, "Blue", "5.3 liter", 24);
 
-let r1 = new HomeRoom("101", "Mr DeFazio");
-let r2 = new HomeRoom("102", "Ms Maria");
+myJeep.fuelUp(10);
 
-console.log(r1.description());
+myJeep.drive(30);
+
+// console.log(myJeep.fuelLevel);
+
+
+class truck extends vehicle {
+  constructor (mpg, engineType, gasTankCapacity, bedSize) {
+      super(mpg, 'white', engineType, gasTankCapacity);
+      this.bedSize = bedSize;
+      this.hasCargo = false;
+  }
+
+  loadUp(){
+    this.hasCargo = true;
+  }
+  unload(){
+    this.hasCargo = false;
+  }
+
+  drive(miles) {
+    console.log("inside the truck method");
+    let gallonsConsumed = miles / this.mpg
+    this.fuelLevel = this.fuelLevel - gallonsConsumed;
+
+    if(this.fuelLevel < 0){
+      this.fuelLevel = 0;
+    }
+  }
+  
+}
+
+let myTruck = new truck(30, "Electric", 25, "long");
+myTruck.fuelUp(25);
+myTruck.drive(4);
+console.log(myTruck.fuelLevel);
