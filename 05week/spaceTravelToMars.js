@@ -31,46 +31,34 @@ class Ship {
     this.ability = ability;
     this.crew = [];
   }
-
-
   //if the crew member matches the ability 
   //ex. if this.job = pilot && this.type = mav return ship's ability
   missionStatement() {
+    //check if there are crew members aboard
     if (this.crew.length == 0) {
       return "Can't perform a mission yet.";
     } else {
-      for(let i=0; i<this.crew.length; i++)//loop through the crew members
-      //if the crew member job matches its ship return ships's ability
-      for (let property in jobTypes){//loops through job types to find a match
-        if (property == this.job && jobTypes[property == this.type]){
-          
+      //loop through job types
+      for (let property in jobTypes) {
+        if (this.job == property /*&& this.type == jobTypes[property]*/) {
+
         }
         return this.ability;
+
       }
-      
-
-
     }
-
   }
-
 }
 
 
-
-
-let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-
-
-let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
-let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
-
-
-crewMember1.enterShip(mav);
-crewMember2.enterShip(hermes);
-console.log(mav.missionStatement());
-console.log(hermes.missionStatement());
+// let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+// let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+// let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
+// let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
+// crewMember1.enterShip(mav);
+// crewMember2.enterShip(hermes);
+// console.log(mav.missionStatement());
+// console.log(hermes.missionStatement());
 
 
 
