@@ -35,4 +35,10 @@ h1 {
 .btn {
 margin-top: 2rem;
 padding: .5rem;
+font-size: 1.2rem;
+}
+
+.btn:hover {
+  background: darkgray;
+  border: none;
 }

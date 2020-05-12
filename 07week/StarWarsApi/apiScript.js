@@ -7,19 +7,14 @@ let name = document.querySelector('#name');
 
 function getFilm() {
 
-  
+
   fetch('https://swapi.dev/api/films/')
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      let filmNames = data.results;
-      console.log(filmNames);
-      filmNames.forEach(function(movie){
-        filmNames = movie.title
-        console.log(filmNames);
-      });
-      name.innerText = filmNames;
+      console.log(data.results);
+      randomFilmName(data.results)
     })
     .catch(function (error) {
       console.log(error);
@@ -27,12 +22,12 @@ function getFilm() {
 }
 
 
-function updateFilmName (){
-
+function randomFilmName(films) {
+  let filmName = document.querySelector('#name')
+  let randomChoice = Math.floor(Math.random() * 6)
+  console.log(randomChoice);
+  filmName.innerText = films[randomChoice].title
 }
-
-
-
 
 button.addEventListener('click', getFilm);
 
