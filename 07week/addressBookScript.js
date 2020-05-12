@@ -29,9 +29,27 @@ function processContacts(contacts) {
     contactsName.innerText = 'Name: ' + contact.name.first;
     contactsUl.appendChild(contactsName)
 
-    let contactsAge = document.createElement('li');
-    contactsAge.innerText = 'Age: ' + contact.dob.age;
-    contactsUl.appendChild(contactsAge)
+    let contactsAge = document.createElement('span');
+    contactsAge.innerText = ' | Age: ' + contact.dob.age;
+    contactsName.appendChild(contactsAge)
+
+    let moreInfoButton = document.createElement('button');
+    moreInfoButton.innerText = 'Click here for more info';
+    contactsName.appendChild(moreInfoButton)
+    moreInfoButton.addEventListener('click', function(){
+      //append contact name with li of other info
+      let contactsCell = document.createElement('div')
+      contactsCell.innerText = `Cell Phone Number: ${contact.cell}`
+      contactsName.appendChild(contactsCell)
+
+      let contactsEmail = document.createElement('div')
+      contactsEmail.innerText = `Email Address: ${contact.email}`
+      contactsName.appendChild(contactsEmail)
+      
+      let contactsCountry = document.createElement('div')
+      contactsCountry.innerText = `Country of Origin: ${contact.location.country}`
+      contactsName.appendChild(contactsCountry)
+    })
 
   })
 }
