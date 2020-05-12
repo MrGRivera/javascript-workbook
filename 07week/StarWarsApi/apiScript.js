@@ -2,6 +2,7 @@
 
 let button = document.querySelector('.btn');
 let name = document.querySelector('#name');
+let container = document.querySelector('.character-container')
 
 
 
@@ -30,6 +31,7 @@ function randomFilmName(films) {
 }
 
 button.addEventListener('click', getFilm);
+container.addEventListener('click', getFilm);
 
 
 
