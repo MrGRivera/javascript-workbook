@@ -19,6 +19,7 @@ function getFilm() {
     })
     .catch(function (error) {
       console.log(error);
+      alert('ERROR: THESE ARE NOT THE DROIDS YOU ARE LOOKING FOR');
     })
 }
 
